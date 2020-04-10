@@ -1,0 +1,31 @@
+- name: Install packages
+  dnf:
+    name:
+      - deluge
+      - kodi
+  become: yes
+
+- name: Enable Deluge daemon
+  systemd:
+    name: deluge-daemon
+    enabled: yes
+    state: started
+
+- name: Remove Kodi settings default
+  xml:
+    path: ~/.kodi/userdata/guisettings.xml
+    xpath: "/settings/setting[@id='{{ item.key }}']/@default"
+    state: absent
+  with_items: "{{ kodi_settings | dict2items }}"
+
+- name: Set Kodi settings
+  xml:
+    path: ~/.kodi/userdata/guisettings.xml
+    xpath: "/settings/setting[@id='{{ item.key }}']"
+    value: "{{ item.value }}"
+  with_items: "{{ kodi_settings | dict2items }}"
+
+- name: Add media sources
+  template:
+    src: sources.xml.j2
+    dest: ~/.kodi/userdata/sources.xml

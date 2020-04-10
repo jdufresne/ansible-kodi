@@ -1,0 +1,7 @@
+kodi_settings:
+  input.enablemouse: "false"
+  locale.timezone: "America/Vancouver"
+  locale.timezonecountry: "Canada"
+  musiclibrary.updateonstartup: "true"
+  services.webserver: "true"
+  videolibrary.updateonstartup: "true"

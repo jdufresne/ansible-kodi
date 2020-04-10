@@ -1,0 +1,20 @@
+<sources>
+    <video>
+        <default pathversion="1"></default>
+        <source>
+            <name>Movies</name>
+            <path pathversion="1">{{ ansible_env.HOME }}/Movies/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>TV shows</name>
+            <path pathversion="1">{{ ansible_env.HOME }}/TV shows/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Downloads</name>
+            <path pathversion="1">/var/lib/deluge/Downloads/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </video>
+</sources>
