@@ -11,6 +11,12 @@
     enabled: yes
     state: started
 
+- name: Get Deluge user
+  user:
+    name: deluge
+    state: present
+  register: deluge_user
+
 - name: Remove Kodi settings default
   xml:
     path: ~/.kodi/userdata/guisettings.xml
